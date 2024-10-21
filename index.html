@@ -73,16 +73,6 @@
             <video id="videoPlayer" class="w-full h-full" controls></video>
         </div>
 
-        <div x-show="!isLoading && !error" class="mt-4 flex justify-center space-x-4">
-            <button @click="toggleMinimize" class="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition duration-300">
-                <i class="fas" :class="isMinimized ? 'fa-expand' : 'fa-compress'"></i>
-                <span x-text="isMinimized ? 'Maximize' : 'Minimize'"></span>
-            </button>
-            <button @click="toggleFullscreen" class="bg-green-500 text-white px-4 py-2 rounded-full hover:bg-green-600 transition duration-300">
-                <i class="fas fa-expand"></i> Fullscreen
-            </button>
-        </div>
-
         <div x-show="showChannelList" x-cloak @click.away="showChannelList = false" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 animate__animated animate__fadeIn">
             <div class="bg-white rounded-lg p-6 w-full max-w-4xl max-h-[80vh] overflow-y-auto">
                 <h2 class="text-2xl font-bold mb-4">Channel List</h2>
@@ -108,7 +98,6 @@
 
     <footer class="bg-gray-800 text-white py-4 text-center mt-8">
         <p>&copy; 2024 Rakuten Family. All rights reserved.</p>
-        <p>Total Visits: <span id="visits"></span></p>
     </footer>
 
     <!-- Custom JS -->
