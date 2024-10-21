@@ -4,61 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Rakuten Family Kids & Sports IPTV</title>
 
     <!-- SEO Meta Tags -->
     <meta name="description" content="Stream Rakuten Family Kids and Sports IPTV live with an advanced, high-performance video player. Supports all devices and formats.">
     <meta name="keywords" content="IPTV, Rakuten, Family, Kids, Sports, HLS, Streaming, HTML5, Live TV">
     <meta name="robots" content="index, follow">
-    <meta name="author" content="Likhon Sheikh">
-    <meta name="copyright" content="Rexx Cheat">
 
     <!-- Open Graph Tags -->
     <meta property="og:title" content="Rakuten Family Kids & Sports IPTV">
     <meta property="og:description" content="Watch Rakuten Family Kids and Sports IPTV live with advanced streaming technology.">
     <meta property="og:image" content="assets/images/og-banner.jpg">
-    <meta property="og:url" content="https://bdix-iptv.vercel.app">
+    <meta property="og:url" content="https://rakuten-family.vercel.app/">
     <meta property="og:type" content="website">
-    <meta property="og:locale" content="en_US">
-    <meta property="og:site_name" content="Rakuten Family Kids & Sports IPTV">
-    <meta property="og:video" content="assets/promo-video.mp4">
-    <meta property="og:video:width" content="1920">
-    <meta property="og:video:height" content="1080">
-    <meta property="og:video:type" content="video/mp4">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Rakuten Family Kids & Sports IPTV">
     <meta name="twitter:description" content="Enjoy Rakuten Family Kids and Sports IPTV with an optimized HLS player.">
     <meta name="twitter:image" content="assets/images/og-banner.jpg">
-    <meta name="twitter:site" content="@rexcheat">
-    <meta name="twitter:creator" content="@likhonsheikh">
-
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://bdix-iptv.vercel.app">
-
-    <!-- Language Tags -->
-    <link rel="alternate" href="https://bdix-iptv.vercel.app" hreflang="en-US">
 
     <!-- Favicon -->
-    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="https://rakuten-family.vercel.app/assets/favicon.ico" type="image/x-icon">
 
-    <!-- External Libraries -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Alpine.js -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Animate.css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+    <!-- HLS.js (for HLS stream support on non-Safari browsers) -->
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 
-    <!-- Custom Styles -->
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
-<body class="bg-gray-100 font-sans" x-data="iptvApp()" x-init="init">
+<body class="bg-gray-100 font-sans" x-data="iptvApp" x-init="init">
 
     <header class="bg-red-600 text-white py-4">
         <div class="container mx-auto px-4 flex justify-between items-center">
-            <img src="assets/images/logo.png" alt="Rakuten Logo" class="w-16 h-16 rounded-full float-animation">
-            <h1 class="text-2xl font-bold animate__animated animate__fadeIn">Rakuten IPTV</h1>
+            <img src="https://www.brandcolorcode.com/images/color-palette/rakuten.png" alt="Rakuten Logo" class="w-16 h-16 rounded-full float-animation">
+            <h1 class="text-2xl font-bold animate__animated animate__fadeIn">Rakuten Family Kids & Sports IPTV</h1>
             <button @click="showChannelList = !showChannelList" class="bg-white text-red-600 px-4 py-2 rounded-full hover:bg-red-100 transition duration-300 animate__animated animate__pulse">
                 <i class="fas fa-list-ul mr-2"></i>Channels
             </button>
@@ -66,7 +59,6 @@
     </header>
 
     <main class="container mx-auto px-4 py-8">
-        <!-- Player and Channel List -->
         <div x-show="isLoading" class="text-center py-8">
             <i class="fas fa-spinner fa-spin fa-3x text-red-600"></i>
             <p class="mt-4 text-lg">Loading channels...</p>
@@ -116,8 +108,11 @@
 
     <footer class="bg-gray-800 text-white py-4 text-center mt-8">
         <p>&copy; 2024 Rakuten Family. All rights reserved.</p>
+        <p>Total Visits: <span id="visits"></span></p>
     </footer>
 
+    <!-- Custom JS -->
     <script src="assets/js/script.js"></script>
+
 </body>
 </html>
