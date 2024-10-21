@@ -1,8 +1,8 @@
-# Rakuten Family Kids IPTV
-
 <div align="center">
 
-![Rakuten Family Kids IPTV Logo](https://bdix-iptv.vercel.app/assets/images/logo.png)
+<img src="https://bdix-iptv.vercel.app/assets/images/logo.png" alt="Rakuten Family Kids IPTV Logo" width="150" height="150" style="border-radius: 50%; object-fit: cover; border: 2px solid #0366d6;">
+
+# Rakuten Family Kids IPTV
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Vercel](https://vercelbadge.vercel.app/api/likhondocs/rakuten-family-iptv)](https://vercel.com/likhondocs/rakuten-family-iptv)
@@ -14,6 +14,8 @@
 
 [Features](#-features) • [Quick Start](#-quick-start) • [Deployment](#-deployment) • [Contributing](#-contributing) • [License](#-license)
 
+<img src="https://bdix-iptv.vercel.app/assets/images/og-banner.jpg" alt="Rakuten Family Kids IPTV Banner" width="600">
+
 </div>
 
 ## 📺 Features
@@ -24,26 +26,32 @@
 - 🗂️ **Smart Category Filtering**: Intuitive navigation through channel categories (Family, Kids, Sports).
 - 🎬 **Immersive Fullscreen**: Dive into a captivating fullscreen mode for an unparalleled viewing experience.
 
-![Rakuten Family Kids IPTV Banner](https://bdix-iptv.vercel.app/assets/images/og-banner.jpg)
-
 ## 🗂️ Project Architecture
 
 ```
 rakuten-family-iptv/
-├── assets/
-│   ├── css/
-│   │   └── style.css
-│   ├── js/
-│   │   ├── main.js
-│   │   └── hls.min.js
-│   ├── channels/
-│   │   └── channel-list.json
-│   └── images/
-│       ├── logo.png
-│       └── og-banner.jpg
-├── index.html
-├── README.md
-└── LICENSE
+├── 📁 assets/
+│   ├── 📁 css/
+│   │   └── 📄 style.css
+│   ├── 📁 js/
+│   │   ├── 📄 main.js
+│   │   └── 📄 hls.min.js
+│   ├── 📁 channels/
+│   │   └── 📄 channel-list.json
+│   └── 📁 images/
+│       ├── 🖼️ logo.png
+│       └── 🖼️ og-banner.jpg
+├── 📁 src/
+│   ├── 📁 components/
+│   │   ├── 📄 Player.js
+│   │   ├── 📄 ChannelList.js
+│   │   └── 📄 CategoryFilter.js
+│   └── 📁 utils/
+│       ├── 📄 api.js
+│       └── 📄 helpers.js
+├── 📄 index.html
+├── 📄 README.md
+└── 📄 LICENSE
 ```
 
 ## 🚀 Quick Start
