@@ -34,21 +34,12 @@ rakuten-family-iptv/
 │   ├── 📁 css/
 │   │   └── 📄 style.css
 │   ├── 📁 js/
-│   │   ├── 📄 main.js
-│   │   └── 📄 hls.min.js
+│   │   ├── 📄 script.js
 │   ├── 📁 channels/
-│   │   └── 📄 channel-list.json
+│   │   └── 📄 channels.json
 │   └── 📁 images/
 │       ├── 🖼️ logo.png
 │       └── 🖼️ og-banner.jpg
-├── 📁 src/
-│   ├── 📁 components/
-│   │   ├── 📄 Player.js
-│   │   ├── 📄 ChannelList.js
-│   │   └── 📄 CategoryFilter.js
-│   └── 📁 utils/
-│       ├── 📄 api.js
-│       └── 📄 helpers.js
 ├── 📄 index.html
 ├── 📄 README.md
 └── 📄 LICENSE
