@@ -1,56 +1,105 @@
-This **`README.md`** file is the main documentation for your entire project. It should provide an overview of the project, setup instructions, and how to contribute or deploy the project.
-
-```markdown
 # Rakuten Family Kids IPTV
 
-Welcome to **Rakuten Family Kids IPTV** – a live streaming platform for Family, Kids, and Sports channels with advanced HLS technology, responsive design, and custom controls.
+<div align="center">
 
-## Features
+![Rakuten Family Kids IPTV Logo](https://bdix-iptv.vercel.app/assets/images/logo.png)
 
-- **HLS Streaming**: Stream content across all browsers and devices with HLS.js support.
-- **Responsive Design**: Optimized for mobile and desktop viewing.
-- **Minimizable Player**: Option to minimize or maximize the player for better multitasking.
-- **Category Filtering**: Choose between different channel categories (Family, Kids, Sports).
-- **Fullscreen Support**: Watch in fullscreen mode for an immersive experience.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Vercel](https://vercelbadge.vercel.app/api/likhondocs/rakuten-family-iptv)](https://vercel.com/likhondocs/rakuten-family-iptv)
+[![GitHub issues](https://img.shields.io/github/issues/likhondocs/rakuten-family-iptv)](https://github.com/likhondocs/rakuten-family-iptv/issues)
+[![GitHub stars](https://img.shields.io/github/stars/likhondocs/rakuten-family-iptv)](https://github.com/likhondocs/rakuten-family-iptv/stargazers)
+[![Telegram Channel](https://img.shields.io/badge/Telegram-Channel-blue?style=flat&logo=telegram)](https://t.me/+ZMdQ1loDjJg3YmE9)
 
-## Project Structure
+*A premium live streaming platform for Family, Kids, and Sports channels with cutting-edge HLS technology.*
 
-The project follows a well-organized structure for easy navigation and maintenance:
+[Features](#-features) • [Quick Start](#-quick-start) • [Deployment](#-deployment) • [Contributing](#-contributing) • [License](#-license)
 
-```bash
+</div>
+
+## 📺 Features
+
+- 🌐 **HLS Streaming**: Seamless content delivery across all browsers and devices with HLS.js support.
+- 📱 **Responsive Design**: Fluid layout optimized for both mobile and desktop viewing experiences.
+- 🖼️ **Minimizable Player**: Effortlessly switch between minimized and maximized player states for enhanced multitasking.
+- 🗂️ **Smart Category Filtering**: Intuitive navigation through channel categories (Family, Kids, Sports).
+- 🎬 **Immersive Fullscreen**: Dive into a captivating fullscreen mode for an unparalleled viewing experience.
+
+![Rakuten Family Kids IPTV Banner](https://bdix-iptv.vercel.app/assets/images/og-banner.jpg)
+
+## 🗂️ Project Architecture
+
+```
+rakuten-family-iptv/
 ├── assets/
 │   ├── css/
+│   │   └── style.css
 │   ├── js/
+│   │   ├── main.js
+│   │   └── hls.min.js
 │   ├── channels/
+│   │   └── channel-list.json
 │   └── images/
-└── index.html```
+│       ├── logo.png
+│       └── og-banner.jpg
+├── index.html
+├── README.md
+└── LICENSE
+```
 
-- **`index.html`**: The main entry point of the project.
-- **`assets/`**: Contains all the static assets (CSS, JS, images, and channel data).
-
-## Quick Start
-
-To get started with the project:
+## 🚀 Quick Start
 
 1. Clone the repository:
    ```bash
    git clone https://github.com/likhondocs/rakuten-family-iptv.git
    ```
+2. Navigate to the project directory:
+   ```bash
+   cd rakuten-family-iptv
+   ```
+3. Launch `index.html` in your preferred browser or utilize a live server for local development.
 
-2. Open the `index.html` file in your browser, or use a live server for local development.
+## 🌐 Deployment
 
-## Deployment
+Deploy effortlessly with Vercel:
 
-You can easily deploy the project using Vercel or any static site hosting platform:
+1. Create a [Vercel](https://vercel.com/) account.
+2. Connect your GitHub repository.
+3. Deploy and access your live site instantly.
 
-1. Sign up for a [Vercel](https://vercel.com/) account.
-2. Link your GitHub repository.
-3. Deploy and access your live site at `https://your-vercel-project-url.vercel.app`.
+## 🤝 Contributing
 
-## Contributing
+We welcome contributions! Here's how you can make a difference:
 
-Contributions are welcome! Please feel free to submit issues and pull requests on GitHub.
+1. Fork the project
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-## License
+## 📄 License
 
-This project is licensed under the MIT License.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgements
+
+- Special thanks to [Rakuten TV](https://www.rakuten.tv/uk) for providing high-quality m3u8 files.
+- Our partner: [RexxCheat](https://t.me/RexxCheat) for their invaluable support.
+
+## 📞 Contact & Support
+
+- 📧 Email: [author@likhonsheikh.com](mailto:author@likhonsheikh.com)
+- 💬 Telegram: [Likhon Sheikh](https://t.me/+ZMdQ1loDjJg3YmE9)
+
+## 🌟 Star Us on GitHub
+
+If you find this project useful, please consider giving it a star on GitHub. It helps us know that you appreciate our work and allows others to discover the project more easily.
+
+[![GitHub stars](https://img.shields.io/github/stars/likhondocs/rakuten-family-iptv?style=social)](https://github.com/likhondocs/rakuten-family-iptv/stargazers)
+
+---
+
+<div align="center">
+  Made with ❤️ by <a href="https://github.com/likhondocs">likhondocs</a>
+  <br>
+  © 2024 Rakuten Family Kids IPTV. All rights reserved.
+</div>
