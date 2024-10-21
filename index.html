@@ -15,12 +15,12 @@
     <!-- Open Graph Tags -->
     <meta property="og:title" content="Rakuten Family Kids & Sports IPTV">
     <meta property="og:description" content="Watch Rakuten Family Kids and Sports IPTV live with advanced streaming technology.">
-    <meta property="og:image" content="https://bdix-iptv.vercel.app/assets/og-banner.jpg">
+    <meta property="og:image" content="assets/images/og-banner.jpg">
     <meta property="og:url" content="https://bdix-iptv.vercel.app">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="en_US">
     <meta property="og:site_name" content="Rakuten Family Kids & Sports IPTV">
-    <meta property="og:video" content="https://bdix-iptv.vercel.app/assets/promo-video.mp4">
+    <meta property="og:video" content="assets/promo-video.mp4">
     <meta property="og:video:width" content="1920">
     <meta property="og:video:height" content="1080">
     <meta property="og:video:type" content="video/mp4">
@@ -29,7 +29,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Rakuten Family Kids & Sports IPTV">
     <meta name="twitter:description" content="Enjoy Rakuten Family Kids and Sports IPTV with an optimized HLS player.">
-    <meta name="twitter:image" content="https://bdix-iptv.vercel.app/assets/og-banner.jpg">
+    <meta name="twitter:image" content="assets/images/og-banner.jpg">
     <meta name="twitter:site" content="@rexcheat">
     <meta name="twitter:creator" content="@likhonsheikh">
 
@@ -39,189 +39,25 @@
     <!-- Language Tags -->
     <link rel="alternate" href="https://bdix-iptv.vercel.app" hreflang="en-US">
 
-    <!-- Structured Data (JSON-LD) -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Rakuten Family Kids & Sports IPTV",
-      "url": "https://bdix-iptv.vercel.app",
-      "description": "Stream Rakuten Family Kids and Sports IPTV live with an advanced, high-performance video player. Supports all devices and formats.",
-      "publisher": {
-        "@type": "Organization",
-        "name": "Rexx Cheat",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://bdix-iptv.vercel.app/assets/logo.png"
-        }
-      },
-      "image": "https://bdix-iptv.vercel.app/assets/og-banner.jpg",
-      "video": {
-        "@type": "VideoObject",
-        "name": "Rakuten Family Kids & Sports IPTV Promo",
-        "embedUrl": "https://bdix-iptv.vercel.app/assets/promo-video.mp4",
-        "thumbnailUrl": "https://bdix-iptv.vercel.app/assets/og-banner.jpg",
-        "width": 1920,
-        "height": 1080
-      },
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://bdix-iptv.vercel.app?q={search_term_string}",
-        "query-input": "required name=search_term_string"
-      }
-    }
-    </script>
-
     <!-- Favicon -->
-    <link rel="icon" href="https://bdix-iptv.vercel.app/assets/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
 
-    <!-- Tailwind CSS -->
+    <!-- External Libraries -->
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Alpine.js -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- Animate.css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-
-    <!-- HLS.js (for HLS stream support on non-Safari browsers) -->
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 
     <!-- Custom Styles -->
-    <style>
-        [x-cloak] { display: none !important; }
-        
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-
-        .float-animation {
-            animation: float 3s ease-in-out infinite;
-        }
-
-        .player-wrapper {
-            aspect-ratio: 16 / 9;
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        @media (max-width: 640px) {
-            .player-wrapper {
-                aspect-ratio: 16 / 9;
-                width: 100%;
-            }
-        }
-
-        .minimized {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 300px;
-            height: 169px;
-            z-index: 1000;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        /* Fixing footer position */
-        footer {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-        }
-    </style>
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
-<body class="bg-gray-100 font-sans" x-data="{ 
-    currentChannel: null,
-    channels: [],
-    isMinimized: false,
-    isFullscreen: false,
-    showChannelList: false,
-    activeCategory: 'all',
-    isLoading: true,
-    error: null,
-    async init() {
-        await this.loadChannels();
-        this.initializePlayer();
-    },
-    async loadChannels() {
-        try {
-            const response = await fetch('https://raw.githubusercontent.com/likhondocs/Rakuten-Family/refs/heads/main/channels.json');
-            if (!response.ok) {
-                throw new Error('Failed to load channels');
-            }
-            this.channels = await response.json();
-            this.currentChannel = this.channels[0];
-            this.isLoading = false;
-        } catch (error) {
-            console.error('Error loading channels:', error);
-            this.error = 'Failed to load channels. Please try again later.';
-            this.isLoading = false;
-        }
-    },
-    initializePlayer() {
-        if (this.currentChannel) {
-            const videoPlayer = document.getElementById('videoPlayer');
-            if (Hls.isSupported()) {
-                const hls = new Hls();
-                hls.loadSource(this.currentChannel.url);
-                hls.attachMedia(videoPlayer);
-                hls.on(Hls.Events.MANIFEST_PARSED, function() {
-                    videoPlayer.play();
-                });
-            } else if (videoPlayer.canPlayType('application/vnd.apple.mpegurl')) {
-                videoPlayer.src = this.currentChannel.url;
-                videoPlayer.play();
-            } else {
-                this.error = 'Your browser does not support HLS streaming.';
-            }
-        }
-    },
-    changeChannel(channel) {
-        this.currentChannel = channel;
-        this.initializePlayer();
-        this.showChannelList = false;
-    },
-    toggleMinimize() {
-        this.isMinimized = !this.isMinimized;
-        this.$nextTick(() => {
-            const videoPlayer = document.getElementById('videoPlayer');
-            if (this.isMinimized) {
-                videoPlayer.pause();
-            } else {
-                videoPlayer.play();
-            }
-        });
-    },
-    toggleFullscreen() {
-        if (!document.fullscreenElement) {
-            document.querySelector('.player-wrapper').requestFullscreen();
-        } else {
-            document.exitFullscreen();
-        }
-    },
-    filteredChannels() {
-        if (this.activeCategory === 'all') {
-            return this.channels;
-        }
-        return this.channels.filter(channel => channel.category === this.activeCategory);
-    },
-    getChannelLogo(channel) {
-        return channel.logo ? channel.logo : 'https://github.com/likhondocs/Rakuten-Family/blob/main/assets/images/logo.jpeg?raw=true';
-    }
-}" x-init="init">
+<body class="bg-gray-100 font-sans" x-data="iptvApp()" x-init="init">
 
     <header class="bg-red-600 text-white py-4">
         <div class="container mx-auto px-4 flex justify-between items-center">
-            <img src="https://github.com/likhondocs/rakuten-family-iptv/blob/main/logo.png?raw=true" alt="Rakuten Logo" class="w-16 h-16 rounded-full float-animation">
+            <img src="assets/images/logo.png" alt="Rakuten Logo" class="w-16 h-16 rounded-full float-animation">
             <h1 class="text-2xl font-bold animate__animated animate__fadeIn">Rakuten IPTV</h1>
             <button @click="showChannelList = !showChannelList" class="bg-white text-red-600 px-4 py-2 rounded-full hover:bg-red-100 transition duration-300 animate__animated animate__pulse">
                 <i class="fas fa-list-ul mr-2"></i>Channels
@@ -230,6 +66,7 @@
     </header>
 
     <main class="container mx-auto px-4 py-8">
+        <!-- Player and Channel List -->
         <div x-show="isLoading" class="text-center py-8">
             <i class="fas fa-spinner fa-spin fa-3x text-red-600"></i>
             <p class="mt-4 text-lg">Loading channels...</p>
@@ -281,16 +118,6 @@
         <p>&copy; 2024 Rakuten Family. All rights reserved.</p>
     </footer>
 
-    <script>
-        // Fix the player resizing issue when minimizing/maximizing
-        const playerWrapper = document.querySelector('.player-wrapper');
-        const resizePlayer = () => {
-            if (playerWrapper) {
-                playerWrapper.style.height = `${playerWrapper.offsetWidth * 9 / 16}px`;
-            }
-        };
-        window.addEventListener('resize', resizePlayer);
-        resizePlayer(); // Initial call
-    </script>
+    <script src="assets/js/script.js"></script>
 </body>
 </html>
