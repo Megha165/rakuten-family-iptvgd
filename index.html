@@ -103,7 +103,7 @@
     },
     async loadChannels() {
         try {
-            const response = await fetch('channels.json');
+            const response = await fetch('https://raw.githubusercontent.com/likhondocs/Rakuten-Family/refs/heads/main/channels.json');
             if (!response.ok) {
                 throw new Error('Failed to load channels');
             }
