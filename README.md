@@ -2,7 +2,7 @@
 
 <img src="https://bdix-iptv.vercel.app/assets/images/logo.png" alt="Rakuten Family Kids IPTV Logo" width="150" height="150" style="border-radius: 50%; object-fit: cover; border: 2px solid #0366d6;">
 
-# Rakuten Family Kids IPTV
+# Rakuten Family (IPTV)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Vercel](https://vercelbadge.vercel.app/api/likhondocs/rakuten-family-iptv)](https://vercel.com/likhondocs/rakuten-family-iptv)
