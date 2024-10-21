@@ -23,8 +23,7 @@ The project follows a well-organized structure for easy navigation and maintenan
 │   ├── js/
 │   ├── channels/
 │   └── images/
-└── index.html
-```
+└── index.html```
 
 - **`index.html`**: The main entry point of the project.
 - **`assets/`**: Contains all the static assets (CSS, JS, images, and channel data).
