@@ -35,7 +35,7 @@ To get started with the project:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/rakuten-family-iptv.git
+   git clone https://github.com/likhondocs/rakuten-family-iptv.git
    ```
 
 2. Open the `index.html` file in your browser, or use a live server for local development.
