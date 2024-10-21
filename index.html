@@ -223,14 +223,6 @@
     </footer>
 
     <script>
-        // Using CountAPI to track total page visits
-        function cb(response) {
-            document.getElementById('visits').innerText = response.value;
-        }
-    </script>
-    <script async src="https://api.countapi.xyz/hit/rakuten-family.vercel.app/visits?callback=cb"></script>
-
-    <script>
         // Fix the player resizing issue when minimizing/maximizing
         const playerWrapper = document.querySelector('.player-wrapper');
         const resizePlayer = () => {
