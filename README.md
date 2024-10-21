@@ -26,6 +26,18 @@
 - 🗂️ **Smart Category Filtering**: Intuitive navigation through channel categories (Family, Kids, Sports).
 - 🎬 **Immersive Fullscreen**: Dive into a captivating fullscreen mode for an unparalleled viewing experience.
 
+## 🌐 Deployment
+
+### **Deploy with Vercel** 
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/likhondocs/rakuten-family-iptv)
+
+Alternatively, follow these steps:
+
+1. Create a [Vercel](https://vercel.com/) account.
+2. Connect your GitHub repository.
+3. Deploy and access your live site instantly.
+
 ## 🗂️ Project Architecture
 
 ```
