@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Rakuten Family Kids & Sports IPTV</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Stream Rakuten Family Kids and Sports IPTV live with an advanced, high-performance video player. Supports all devices and formats.">
+    <meta name="keywords" content="IPTV, Rakuten, Family, Kids, Sports, HLS, Streaming, HTML5, Live TV">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Rakuten Family Kids & Sports IPTV">
+    <meta property="og:description" content="Watch Rakuten Family Kids and Sports IPTV live with advanced streaming technology.">
+    <meta property="og:image" content="https://www.brandcolorcode.com/images/color-palette/rakuten.png">
+    <meta property="og:url" content="https://rakuten-family.vercel.app/">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Rakuten Family Kids & Sports IPTV">
+    <meta name="twitter:description" content="Enjoy Rakuten Family Kids and Sports IPTV with an optimized HLS player.">
+    <meta name="twitter:image" content="https://www.brandcolorcode.com/images/color-palette/rakuten.png">
+
+    <!-- Favicon -->
+    <link rel="icon" href="https://rakuten-family.vercel.app/assets/favicon.ico" type="image/x-icon">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+    <!-- Custom Styles -->
+    <style>
+        [x-cloak] { display: none !important; }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .player-wrapper {
+            aspect-ratio: 16 / 9;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 640px) {
+            .player-wrapper {
+                aspect-ratio: 16 / 9;
+                width: 100%;
+            }
+        }
+
+        .minimized {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 300px;
+            height: 169px;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        /* Fixing footer position */
+        footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 font-sans" x-data="{ 
+    currentChannel: null,
+    channels: [],
+    isMinimized: false,
+    isFullscreen: false,
+    showChannelList: false,
+    activeCategory: 'all',
+    isLoading: true,
+    error: null,
+    async init() {
+        await this.loadChannels();
+        this.initializePlayer();
+    },
+    async loadChannels() {
+        try {
+            const response = await fetch('channels.json');
+            if (!response.ok) {
+                throw new Error('Failed to load channels');
+            }
+            this.channels = await response.json();
+            this.currentChannel = this.channels[0];
+            this.isLoading = false;
+        } catch (error) {
+            console.error('Error loading channels:', error);
+            this.error = 'Failed to load channels. Please try again later.';
+            this.isLoading = false;
+        }
+    },
+    initializePlayer() {
+        if (this.currentChannel) {
+            const videoPlayer = document.getElementById('videoPlayer');
+            videoPlayer.src = this.currentChannel.url;
+            videoPlayer.play();
+        }
+    },
+    changeChannel(channel) {
+        this.currentChannel = channel;
+        const videoPlayer = document.getElementById('videoPlayer');
+        videoPlayer.src = channel.url;
+        videoPlayer.play();
+        this.showChannelList = false;
+    },
+    toggleMinimize() {
+        this.isMinimized = !this.isMinimized;
+        this.$nextTick(() => {
+            const videoPlayer = document.getElementById('videoPlayer');
+            if (this.isMinimized) {
+                videoPlayer.pause();
+            } else {
+                videoPlayer.play();
+            }
+        });
+    },
+    toggleFullscreen() {
+        if (!document.fullscreenElement) {
+            document.querySelector('.player-wrapper').requestFullscreen();
+        } else {
+            document.exitFullscreen();
+        }
+    },
+    filteredChannels() {
+        if (this.activeCategory === 'all') {
+            return this.channels;
+        }
+        return this.channels.filter(channel => channel.category === this.activeCategory);
+    },
+    getChannelLogo(channel) {
+        return channel.logo ? channel.logo : 'https://github.com/likhondocs/Rakuten-Family/blob/main/Rakuten-Logo.png';
+    }
+}" x-init="init">
+
+    <header class="bg-red-600 text-white py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <img src="https://www.brandcolorcode.com/images/color-palette/rakuten.png" alt="Rakuten Logo" class="w-16 h-16 rounded-full float-animation">
+            <h1 class="text-2xl font-bold animate__animated animate__fadeIn">Rakuten Family Kids & Sports IPTV</h1>
+            <button @click="showChannelList = !showChannelList" class="bg-white text-red-600 px-4 py-2 rounded-full hover:bg-red-100 transition duration-300 animate__animated animate__pulse">
+                <i class="fas fa-list-ul mr-2"></i>Channels
+            </button>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <div x-show="isLoading" class="text-center py-8">
+            <i class="fas fa-spinner fa-spin fa-3x text-red-600"></i>
+            <p class="mt-4 text-lg">Loading channels...</p>
+        </div>
+
+        <div x-show="error" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+            <strong class="font-bold">Error!</strong>
+            <span class="block sm:inline" x-text="error"></span>
+        </div>
+
+        <div x-show="!isLoading && !error" class="player-wrapper bg-black rounded-lg shadow-lg overflow-hidden transition-all duration-300 ease-in-out" :class="{ 'minimized': isMinimized }">
+            <video id="videoPlayer" class="w-full h-full" controls></video>
+        </div>
+
+        <div x-show="!isLoading && !error" class="mt-4 flex justify-center space-x-4">
+            <button @click="toggleMinimize" class="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition duration-300">
+                <i class="fas" :class="isMinimized ? 'fa-expand' : 'fa-compress'"></i>
+                <span x-text="isMinimized ? 'Maximize' : 'Minimize'"></span>
+            </button>
+            <button @click="toggleFullscreen" class="bg-green-500 text-white px-4 py-2 rounded-full hover:bg-green-600 transition duration-300">
+                <i class="fas fa-expand"></i> Fullscreen
+            </button>
+        </div>
+
+        <div x-show="showChannelList" x-cloak @click.away="showChannelList = false" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 animate__animated animate__fadeIn">
+            <div class="bg-white rounded-lg p-6 w-full max-w-4xl max-h-[80vh] overflow-y-auto">
+                <h2 class="text-2xl font-bold mb-4">Channel List</h2>
+                <div class="mb-4 flex space-x-2">
+                    <button @click="activeCategory = 'all'" :class="{ 'bg-red-500 text-white': activeCategory === 'all', 'bg-gray-200': activeCategory !== 'all' }" class="px-4 py-2 rounded-full transition duration-300">All</button>
+                    <button @click="activeCategory = 'kids'" :class="{ 'bg-red-500 text-white': activeCategory === 'kids', 'bg-gray-200': activeCategory !== 'kids' }" class="px-4 py-2 rounded-full transition duration-300">Kids</button>
+                    <button @click="activeCategory = 'sports'" :class="{ 'bg-red-500 text-white': activeCategory === 'sports', 'bg-gray-200': activeCategory !== 'sports' }" class="px-4 py-2 rounded-full transition duration-300">Sports</button>
+                </div>
+                <ul class="space-y-4">
+                    <template x-for="channel in filteredChannels()" :key="channel.id">
+                        <li @click="changeChannel(channel)" class="bg-gray-100 hover:bg-red-100 p-4 rounded-lg cursor-pointer flex items-center space-x-4 transition duration-300">
+                            <img :src="getChannelLogo(channel)" alt="Channel Logo" class="w-12 h-12 rounded-lg object-cover">
+                            <div>
+                                <h3 class="text-lg font-semibold" x-text="channel.name"></h3>
+                                <p class="text-gray-600" x-text="channel.category"></p>
+                            </div>
+                        </li>
+                    </template>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-4 text-center mt-8">
+        <p>&copy; 2024 Rakuten Family. All rights reserved.</p>
+        <p>Total Visits: <span id="visits"></span></p>
+    </footer>
+
+    <script>
+        // Using CountAPI to track total page visits
+        function cb(response) {
+            document.getElementById('visits').innerText = response.value;
+        }
+    </script>
+    <script async src="https://api.countapi.xyz/hit/rakuten-family.vercel.app/visits?callback=cb"></script>
+
+    <script>
+        // Fix the player resizing issue when minimizing/maximizing
+        const playerWrapper = document.querySelector('.player-wrapper');
+        const resizePlayer = () => {
+            if (playerWrapper) {
+                playerWrapper.style.height = `${playerWrapper.offsetWidth * 9 / 16}px`;
+            }
+        };
+        window.addEventListener('resize', resizePlayer);
+        resizePlayer(); // Initial call
+    </script>
+</body>
+</html>
