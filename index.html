@@ -14,7 +14,7 @@
     <!-- Open Graph Tags -->
     <meta property="og:title" content="Rakuten Family Kids & Sports IPTV">
     <meta property="og:description" content="Watch Rakuten Family Kids and Sports IPTV live with advanced streaming technology.">
-    <meta property="og:image" content="https://www.brandcolorcode.com/images/color-palette/rakuten.png">
+    <meta property="og:image" content="https://rakuten-family.vercel.app/assets/og-banner.jpg">
     <meta property="og:url" content="https://rakuten-family.vercel.app/">
     <meta property="og:type" content="website">
 
@@ -22,7 +22,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Rakuten Family Kids & Sports IPTV">
     <meta name="twitter:description" content="Enjoy Rakuten Family Kids and Sports IPTV with an optimized HLS player.">
-    <meta name="twitter:image" content="https://www.brandcolorcode.com/images/color-palette/rakuten.png">
+    <meta name="twitter:image" content="https://rakuten-family.vercel.app/assets/og-banner.jpg">
 
     <!-- Favicon -->
     <link rel="icon" href="https://rakuten-family.vercel.app/assets/favicon.ico" type="image/x-icon">
@@ -38,6 +38,9 @@
 
     <!-- Animate.css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+    <!-- HLS.js (for HLS stream support on non-Safari browsers) -->
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 
     <!-- Custom Styles -->
     <style>
@@ -119,15 +122,24 @@
     initializePlayer() {
         if (this.currentChannel) {
             const videoPlayer = document.getElementById('videoPlayer');
-            videoPlayer.src = this.currentChannel.url;
-            videoPlayer.play();
+            if (Hls.isSupported()) {
+                const hls = new Hls();
+                hls.loadSource(this.currentChannel.url);
+                hls.attachMedia(videoPlayer);
+                hls.on(Hls.Events.MANIFEST_PARSED, function() {
+                    videoPlayer.play();
+                });
+            } else if (videoPlayer.canPlayType('application/vnd.apple.mpegurl')) {
+                videoPlayer.src = this.currentChannel.url;
+                videoPlayer.play();
+            } else {
+                this.error = 'Your browser does not support HLS streaming.';
+            }
         }
     },
     changeChannel(channel) {
         this.currentChannel = channel;
-        const videoPlayer = document.getElementById('videoPlayer');
-        videoPlayer.src = channel.url;
-        videoPlayer.play();
+        this.initializePlayer();
         this.showChannelList = false;
     },
     toggleMinimize() {
